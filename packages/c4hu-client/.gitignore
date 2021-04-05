@@ -1,0 +1,6 @@
+.vercel
+node_modules
+.next
+server.js
+.DS_Store
+.env
