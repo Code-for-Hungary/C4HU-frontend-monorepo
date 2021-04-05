@@ -33,7 +33,7 @@ export const projectDataReducer = (state = initialState, { type, payload }) => {
   switch(type){
     case FETCH_PROJECT_DATA__SUCCESS: return {
       ...state,       
-      projectData: payload
+      projectData: payload.data
     }
 
 

@@ -1,34 +1,62 @@
-import { Descriptions, Badge } from 'antd';
+import {
+  Descriptions,
+  Badge,
+  Tag,
+} from 'antd';
+import { useEffect } from 'react';
+import { shallowEqual, useSelector } from 'react-redux';
+import useProject from '../../ducks/useProject';
+import { LoadingOutlined } from '@ant-design/icons'
+
+const { Item } = Descriptions
 
 const TestProjectPage = () => {
+
+  const { fetchProjectData } = useProject()
+
+  useEffect(fetchProjectData, [])
+
+  const projectData = useSelector(state => state.project.projectData || null, shallowEqual)
+
+  if (!projectData) return <LoadingOutlined />
+
+
+  const {
+    name,
+    startdate,
+    description,
+    owner,
+    status,
+    types,
+    categories,
+    skills,
+  } = projectData
+
   return (
-    <Descriptions title="User Info" layout="vertical" bordered>
-      <Descriptions.Item label="Product">Cloud Database</Descriptions.Item>
-      <Descriptions.Item label="Billing Mode">Prepaid</Descriptions.Item>
-      <Descriptions.Item label="Automatic Renewal">YES</Descriptions.Item>
-      <Descriptions.Item label="Order time">2018-04-24 18:00:00</Descriptions.Item>
-      <Descriptions.Item label="Usage Time" span={2}>
-        2019-04-24 18:00:00
-      </Descriptions.Item>
-      <Descriptions.Item label="Status" span={3}>
-        <Badge status="processing" text="Running" />
-      </Descriptions.Item>
-      <Descriptions.Item label="Negotiated Amount">$80.00</Descriptions.Item>
-      <Descriptions.Item label="Discount">$20.00</Descriptions.Item>
-      <Descriptions.Item label="Official Receipts">$60.00</Descriptions.Item>
-      <Descriptions.Item label="Config Info">
-        Data disk type: MongoDB
-        <br />
-        Database version: 3.4
-        <br />
-        Package: dds.mongo.mid
-        <br />
-        Storage space: 10 GB
-        <br />
-        Replication factor: 3
-        <br />
-        Region: East China 1<br />
-      </Descriptions.Item>
+    <Descriptions title={name} layout="vertical" bordered>
+      <Item label="Leírás" span={3}>{description || '-'}</Item>
+      <Item label="Tulajdonos">{owner.name}</Item>
+      <Item label="Kezdete" span={2}>
+        {startdate}
+      </Item>
+      <Item label="Státusz" span={3}>
+        <Badge status="processing" text={status.name} />
+      </Item>
+      <Item label="Típus">
+        {types.map(({ id, name }) => (
+          <Tag key={id}>{name}</Tag>
+        ))}
+      </Item>
+      <Item label="Kategória">
+        {categories.map(({ id, name }) => (
+          <Tag key={id}>{name}</Tag>
+        ))}
+      </Item>
+      <Item label="Skillek">
+        {skills.map(({ id, name }) => (
+          <Tag key={id}>{name}</Tag>
+        ))}
+      </Item>
     </Descriptions>
   )
 }
