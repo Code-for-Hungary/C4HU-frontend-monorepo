@@ -2,7 +2,7 @@ import Layout from '../../components/Layout'
 import ProjectPage from '../../components/ProjectPage';
 import { useRouter } from 'next/router'
 
-const HomePage = () => {
+export default () => {
   const router = useRouter()
   const { projectId } = router.query
 
@@ -14,6 +14,4 @@ const HomePage = () => {
     </Layout>
   );
 }
-
-export default HomePage
 

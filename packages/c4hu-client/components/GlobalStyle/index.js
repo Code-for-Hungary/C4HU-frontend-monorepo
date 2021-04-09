@@ -8,14 +8,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   main {
-
     width: 100%;
     margin: 0 auto;
     min-height: calc(100vh - 133px) !important;    
-  }
-
-  header {
-    padding: 0 5px !important;
   }
 
   .ant-select-dropdown {
