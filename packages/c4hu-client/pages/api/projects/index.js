@@ -1,0 +1,11 @@
+import axios from 'axios'
+
+const projects = async (req, res) => {
+  const { data } = await axios({
+    url: `${process.env.API_URL}/projects`
+  })
+  res.status(200).json(data)
+}
+
+export default projects
+

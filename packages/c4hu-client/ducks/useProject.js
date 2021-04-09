@@ -12,10 +12,10 @@ export const initialState = {
 const useProject = () => {
   const dispatch = useDispatch()
 
-  const fetchProjectData = async () => {
+  const fetchProjectData = async projectId => {
     try {
       dispatch({ type: FETCH_PROJECT_DATA })
-      const data = await dataService.fetchTestData()
+      const data = await dataService.fetchProject(projectId)
       dispatch({ type: FETCH_PROJECT_DATA__SUCCESS, payload: data })
     } catch(error){
       console.log(error)

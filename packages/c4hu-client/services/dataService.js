@@ -1,13 +1,13 @@
 import axios from 'axios'
 
-const fetchTestData = async () => {
+const fetchProject = async id => {
   const { data } = await axios({
-    url: `/api/test`,
+    url: `/api/projects/${id}`,
   })
   return data
 }
 
 
 export default {
-  fetchTestData,
+  fetchProject,
 }

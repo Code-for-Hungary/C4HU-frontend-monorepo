@@ -10,11 +10,11 @@ import { LoadingOutlined } from '@ant-design/icons'
 
 const { Item } = Descriptions
 
-const TestProjectPage = () => {
+const ProjectPage = ({ id }) => {
 
   const { fetchProjectData } = useProject()
 
-  useEffect(fetchProjectData, [])
+  useEffect(() => fetchProjectData(id), [])
 
   const projectData = useSelector(state => state.project.projectData || null, shallowEqual)
 
@@ -61,4 +61,4 @@ const TestProjectPage = () => {
   )
 }
 
-export default TestProjectPage
+export default ProjectPage
