@@ -20,5 +20,5 @@ Our aim is to provide low-cost and hands-on professional training for unprivileg
 
 ---
 
-![Powered by Vercel](./assets/powered-by-vercel.svg)
+[![Powered by Vercel](./assets/powered-by-vercel.svg)](https://vercel.com?utm_source=C4HU&utm_campaign=oss)
 
