@@ -2,6 +2,7 @@ import { Layout as AntLayour, Menu, Breadcrumb } from 'antd';
 import styled from 'styled-components';
 import GlobalStyle from '../GlobalStyle';
 import Link from 'next/link'
+import PoweredByVercel from '../PoweredByVercel';
 
 const { Header, Content, Footer } = AntLayour;
 
@@ -21,6 +22,9 @@ const LogoPlaceholder = styled.div`
 
 const FooterStyled = styled(Footer)`
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `
 
 const Layout = ({ children }) => (
@@ -42,7 +46,13 @@ const Layout = ({ children }) => (
         </Breadcrumb>
         <SiteLayoutContent>{children}</SiteLayoutContent>
       </Content>
-      <FooterStyled>C4HU ©2021</FooterStyled>
+      <FooterStyled>
+        <span>C4HU ©2021 </span>
+        <a href="https://vercel.com?utm_source=C4HU&utm_campaign=oss" target="_blank" rel="noopener noreferrer">
+          <PoweredByVercel />
+        </a>
+      </FooterStyled>
+
     </AntLayour>
   </>
 )
